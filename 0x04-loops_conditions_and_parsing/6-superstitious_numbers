@@ -5,7 +5,7 @@
 i=0
 while [ $i -lt 20 ];
 do
-    echo `expr $i + 1`
+    echo $(($i + 1))
     case $i in
     3)
         echo "bad luck from China"
