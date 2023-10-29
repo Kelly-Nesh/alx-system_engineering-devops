@@ -1,0 +1,23 @@
+What is a server?
+ - a computer program or software that provides services to a client
+What is the role of the domain name?
+ - To help in accessing servers since humans cannot remember ip addresses
+What type of DNS record www is in www.foobar.com?
+ - A record
+What is the role of the web server?
+ - To receive http requests from the client/user and submit reponses e.g in form of web pages
+What is the role of the application server?
+ - Provides logic and functionality which produce dynamic web pages depending on client's request
+What is the role of the database?
+ - To have a place to store and retrieve data needed when necessary
+What is the server using to communicate with the computer of the user requesting the website?
+ - A http response
+
+SPOF In the system.
+ - The system lack redundancy where only one server, database and web server are used such that if one of them fails the whole system comes to a halt
+
+Downtime when maintenance needed (like deploying new code web server needs to be restarted)
+ - Since we only have one server, when its being restarted after deploying new code the users will suffer downtime since there is no backup server
+Cannot scale if too much incoming traffic
+ - The system is not scalable without having to halt everything and using a new infrastructure.
+
