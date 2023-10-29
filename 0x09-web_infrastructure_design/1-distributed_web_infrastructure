@@ -1,0 +1,6 @@
+to reduce cases of spofs
+round robin technique where it goes through the servers each at a time and when it reaches the third server start all over from the first
+Active-Active setup
+
+SPOF is at the load balancer where if it fails, the whole system will carash
+insecure  since no ssl is used and no firewalls are present
