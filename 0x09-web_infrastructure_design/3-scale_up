@@ -1,0 +1,23 @@
+
+explain some specifics about this infrastructure:
+
+    For every additional element, why you are adding it
+- To increase redundancy reducing potential ares of spof
+- To ease scalability
+    What are firewalls for
+- Security
+    Why is the traffic served over HTTPS
+- To encrypt data being sent over the network for security
+    What monitoring is used for
+- To provide feedback and measure efficiency among other things and report potential flaws
+    How the monitoring tool is collecting data
+    Explain what to do if you want to monitor your web server QPS
+QPS means queries per second
+You must be able to explain what the issues are with this infrastructure:
+
+    Why terminating SSL at the load balancer level is an issue. With direct access to the server, it is unsafe
+    Why having only one MySQL server capable of accepting writes is an issue
+in case of corruption or failure the database data may be lost
+    Why having servers with all the same components (database, web server and application server) might be a problem
+- potential flaw in design will be tiring to fix
+- Security issue means the whole system is compromised
