@@ -3,11 +3,11 @@
 sudo apt update -y
 sudo apt install -y nginx
 sudo ufw allow 'Nginx HTTP'
-sudo chown -R $USER:$USER /var/www/
+sudo chown -R "$USER":"$USER" /var/www/
 sudo chmod -R 755 /var/www/
 echo 'Hello World!' > /var/www/html/index.html
-sudo chown -R $USER:$USER /etc/nginx/
+sudo chown -R "$USER":"$USER" /etc/nginx/
 sudo chmod -R 755 /etc/nginx/
-# shellcheck disable=SC2154
+# shellcheck disable=SC2154,SC2016
 sed -i '50 a\                add_header X-Served-By $hostname always;' /etc/nginx/sites-available/default
 sudo service nginx restart
