@@ -4,9 +4,10 @@ sudo apt update -y
 sudo apt-get install -y --no-install-recommends software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-2.0
 sudo apt-get install -y haproxy=2.0.\*
+sudo service haproxy start
 sudo chown -R "$USER":"$USER" /etc/haproxy/
+sudo sed -i "23i \        no option http-use-htx" /etc/haproxy/haproxy.cfg
 printf "frontend bnb-frontend
-		no option http-use-htx
         bind :80
         mode http
         default_backend bnb-backend
@@ -16,5 +17,4 @@ backend bnb-backend
         server web-02 54.173.168.47 check port 80
 " >> /etc/haproxy/haproxy.cfg
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
-sudo service haproxy start
 sudo service haproxy restart
