@@ -11,7 +11,9 @@ def number_of_subscribers(subreddit):
     }
     resp = requests.get(f"https://www.reddit.com/r/{subreddit}/about.json",
                    headers=header, allow_redirects=False)
-    if resp.status_code == 404 or\
-            'subscribers' not in resp.json()['data'].keys():
+    if resp.status_code == 404:
         return 0
-    return resp.json()["data"]["subscribers"]
+    try:
+        return resp.json().get("data").get("subscribers")
+    except requests.exceptions.JSONDecodeError:
+        return 0
