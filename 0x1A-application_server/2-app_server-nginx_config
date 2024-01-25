@@ -1,0 +1,42 @@
+server {
+        listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+	index index.html index.nginx-debian.html;
+
+	server_name 18.206.232.147
+
+	add_header X-Served-By 109693-web-01;
+
+	location =  /airbnb-onepage/{
+	proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+	}
+
+	location ~ /airbnb-dynamic/number_odd_or_even/(\d+){
+	        proxy_pass http://127.0.0.1:5000/number_odd_or_even/$1;
+	}
+
+	location /hbnb_static {
+		alias /data/web_static/current/;
+		index index.html index.htm;
+	}
+
+
+	index index.html index.htm index.nginx-debian.html;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+                add_header X-Served-By $hostname always;
+		try_files $uri $uri/ =404;
+	}
+        location /redirect_me {
+	        rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4? permanent;
+	}
+        error_page 404 /custom_404.html;
+
+        location = /custom_404.html {
+	        root /usr/share/nginx/html;
+        	internal;
+}
